@@ -53,7 +53,6 @@ public class MainTerminal extends Terminal implements ChoiceTerminal {
     Vehicle vehicle = VehicleFactory.create(vehicleType, vehicleWeight);
 
 
-
     Warehouse.getInstance().registerNewVehicle(vehicle);
   }
 }

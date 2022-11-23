@@ -9,7 +9,15 @@ import types.VehicleType;
 public class VehicleFactory {
 
   public static Vehicle create(int vehicleType, int vehicleWeight) {
-    Vehicle vehicle = null;
+    Vehicle vehicle = switch(vehicleType) {
+      case VehicleType.VAN -> new Van(vehicleWeight);
+      case VehicleType.LIGHT_TRUCK -> new LightTruck(vehicleWeight);
+      case VehicleType.HEAVY_TRUCK -> new HeavyTruck(vehicleWeight);
+      default -> throw new IllegalStateException("Unable to identify type");
+    };
+
+    return vehicle;
+    /*Vehicle vehicle = null;
 
     if(vehicleType == VehicleType.VAN) {
       vehicle = new Van(vehicleWeight);
@@ -21,6 +29,6 @@ public class VehicleFactory {
       System.out.println("Could not identify vehicle type");
     }
 
-    return vehicle;
+    return vehicle;*/
   }
 }
