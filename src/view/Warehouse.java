@@ -2,6 +2,7 @@ package view;
 
 import coordinator.BayCoordinator;
 import coordinator.BayService;
+import factory.BayFactory;
 import pojo.Bay;
 import pojo.Vehicle;
 import types.BayIndex;
@@ -17,18 +18,12 @@ public class Warehouse {
   private final MainTerminal mainTerminal;
 
   private Warehouse() {
-    List<Integer> vehicleRestrictionsBayA = List.of(VehicleType.VAN, VehicleType.LIGHT_TRUCK);
-    List<Integer> vehicleRestrictionsBayB = List.of(VehicleType.VAN);
-    List<Integer> vehicleRestrictionsBayC = List.of(VehicleType.LIGHT_TRUCK);
-    List<Integer> vehicleRestrictionsBayD = List.of(VehicleType.LIGHT_TRUCK, VehicleType.HEAVY_TRUCK);
-    List<Integer> vehicleRestrictionsBayE = List.of(VehicleType.HEAVY_TRUCK);
-
     List<Bay> bays = new ArrayList<>();
-    bays.add(new Bay(BayIndex.BAY_A, 5000, vehicleRestrictionsBayA));
-    bays.add(new Bay(BayIndex.BAY_B, 5000, vehicleRestrictionsBayB));
-    bays.add(new Bay(BayIndex.BAY_C, 9000, vehicleRestrictionsBayC));
-    bays.add(new Bay(BayIndex.BAY_D, 9000, vehicleRestrictionsBayD));
-    bays.add(new Bay(BayIndex.BAY_E, 15000, vehicleRestrictionsBayE));
+    bays.add(BayFactory.create(BayIndex.BAY_A));
+    bays.add(BayFactory.create(BayIndex.BAY_B));
+    bays.add(BayFactory.create(BayIndex.BAY_C));
+    bays.add(BayFactory.create(BayIndex.BAY_D));
+    bays.add(BayFactory.create(BayIndex.BAY_E));
 
     this.bayService = new BayCoordinator(bays);
     this.mainTerminal = new MainTerminal();

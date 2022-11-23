@@ -56,4 +56,18 @@ public abstract class Terminal {
       this.handleInput(input);
     }
   }
+
+  public String queryInput(String query, List<String> options) {
+    System.out.println(query);
+    if(options != null) {
+      for (int i = 0; i < options.size(); i++) {
+        System.out.println(i + " - " + options.get(i));
+      }
+    }
+    return scanner.nextLine();
+  }
+
+  public String queryInput(String query) {
+    return queryInput(query, null);
+  }
 }

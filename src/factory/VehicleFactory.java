@@ -9,26 +9,11 @@ import types.VehicleType;
 public class VehicleFactory {
 
   public static Vehicle create(int vehicleType, int vehicleWeight) {
-    Vehicle vehicle = switch(vehicleType) {
+    return switch(vehicleType) {
       case VehicleType.VAN -> new Van(vehicleWeight);
       case VehicleType.LIGHT_TRUCK -> new LightTruck(vehicleWeight);
       case VehicleType.HEAVY_TRUCK -> new HeavyTruck(vehicleWeight);
       default -> throw new IllegalStateException("Unable to identify type");
     };
-
-    return vehicle;
-    /*Vehicle vehicle = null;
-
-    if(vehicleType == VehicleType.VAN) {
-      vehicle = new Van(vehicleWeight);
-    } else if (vehicleType == VehicleType.LIGHT_TRUCK) {
-      vehicle = new LightTruck(vehicleWeight);
-    } else if (vehicleType == VehicleType.HEAVY_TRUCK) {
-      vehicle = new HeavyTruck(vehicleWeight);
-    } else {
-      System.out.println("Could not identify vehicle type");
-    }
-
-    return vehicle;*/
   }
 }

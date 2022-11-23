@@ -38,21 +38,32 @@ public class MainTerminal extends Terminal implements ChoiceTerminal {
     Scanner scanner = new Scanner(System.in);
     String response = null;
 
-    System.out.println("Vehicle type: ");
+    /*System.out.println("Vehicle type: ");
     for (int i = 0; i < vehiclesTypes.size(); i++) {
       System.out.println(i + " - " + vehiclesTypes.get(i));
     }
-
-    response = scanner.nextLine();
-    int vehicleType = Integer.parseInt(response);
-
-    System.out.println("Vehicle weight: ");
-    response = scanner.nextLine();
-    int vehicleWeight = Integer.parseInt(response);
-
-    Vehicle vehicle = VehicleFactory.create(vehicleType, vehicleWeight);
+    response = scanner.nextLine();*/
 
 
-    Warehouse.getInstance().registerNewVehicle(vehicle);
+
+    try {
+
+      response = queryInput("Vehicle type: ", vehiclesTypes);
+      int vehicleType = Integer.parseInt(response);
+
+      /*System.out.println("Vehicle weight: ");
+      response = scanner.nextLine();*/
+
+      response = queryInput("Vehicle weight: ");
+
+      int vehicleWeight = Integer.parseInt(response);
+
+      Vehicle vehicle = VehicleFactory.create(vehicleType, vehicleWeight);
+
+      Warehouse.getInstance().registerNewVehicle(vehicle);
+
+    } catch(NumberFormatException ex) {
+      ex.printStackTrace();
+    }
   }
 }
