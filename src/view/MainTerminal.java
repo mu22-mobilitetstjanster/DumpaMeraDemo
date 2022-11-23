@@ -1,5 +1,6 @@
 package view;
 
+import factory.VehicleFactory;
 import pojo.HeavyTruck;
 import pojo.LightTruck;
 import pojo.Van;
@@ -41,6 +42,7 @@ public class MainTerminal extends Terminal implements ChoiceTerminal {
     for (int i = 0; i < vehiclesTypes.size(); i++) {
       System.out.println(i + " - " + vehiclesTypes.get(i));
     }
+
     response = scanner.nextLine();
     int vehicleType = Integer.parseInt(response);
 
@@ -48,16 +50,8 @@ public class MainTerminal extends Terminal implements ChoiceTerminal {
     response = scanner.nextLine();
     int vehicleWeight = Integer.parseInt(response);
 
-    Vehicle vehicle = null;
-    if(vehicleType == VehicleType.VAN) {
-      vehicle = new Van(vehicleWeight);
-    } else if (vehicleType == VehicleType.LIGHT_TRUCK) {
-      vehicle = new LightTruck(vehicleWeight);
-    } else if (vehicleType == VehicleType.HEAVY_TRUCK) {
-      vehicle = new HeavyTruck(vehicleWeight);
-    } else {
-      System.out.println("Could not identify vehicle type");
-    }
+    Vehicle vehicle = VehicleFactory.create(vehicleType, vehicleWeight);
+
 
 
     Warehouse.getInstance().registerNewVehicle(vehicle);

@@ -31,6 +31,7 @@ public abstract class Terminal {
         Choice choice = this.choices.get(i);
         System.out.println(i + " - " + choice.getTitle());
       }
+
       waitForInput();
     }
   }
@@ -48,6 +49,7 @@ public abstract class Terminal {
 
   private void waitForInput() {
     String input = scanner.nextLine();
+
     if(input.equalsIgnoreCase(EXIT_KEY_WORD)) {
       this.open = false;
     } else {
