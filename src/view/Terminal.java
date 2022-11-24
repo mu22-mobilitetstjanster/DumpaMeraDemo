@@ -57,6 +57,7 @@ public abstract class Terminal {
     }
   }
 
+
   public String queryInput(String query, List<String> options) {
     System.out.println(query);
     if(options != null) {
