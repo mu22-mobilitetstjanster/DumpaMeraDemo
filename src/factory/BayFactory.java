@@ -1,5 +1,6 @@
 package factory;
 
+import exception.BayNotExistException;
 import pojo.Bay;
 import types.VehicleType;
 import types.BayIndex;
@@ -32,6 +33,7 @@ public class BayFactory {
         List<Integer> vehicleRestrictions = List.of(VehicleType.HEAVY_TRUCK);
         bay = new Bay(BayIndex.BAY_E, 25000, vehicleRestrictions);
       }
+      default -> throw new BayNotExistException(bayIndex);
     }
 
     return bay;

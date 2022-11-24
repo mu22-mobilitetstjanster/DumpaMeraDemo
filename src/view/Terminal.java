@@ -3,9 +3,7 @@ package view;
 import pojo.Choice;
 import validation.VehicleValidation;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public abstract class Terminal {
   private static final String EXIT_KEY_WORD = "exit";
@@ -85,7 +83,11 @@ public abstract class Terminal {
   }
 
   public int queryIntegerInput(String query) {
-    return queryIntegerInput(query, null);
+    return queryIntegerInput(query, Collections.EMPTY_LIST);
+  }
+
+  public int queryIntegerInput(String query, VehicleValidation validation) {
+    return queryIntegerInput(query, null, validation);
   }
 
   public String queryInput(String query, List<String> options) {
