@@ -29,7 +29,7 @@ public class Warehouse {
     bays.add(BayFactory.create(BayIndex.BAY_C));
     bays.add(BayFactory.create(BayIndex.BAY_D));
     bays.add(BayFactory.create(BayIndex.BAY_E));
-    //bays.add(BayFactory.create("F"));
+    bays.add(BayFactory.create("F"));
 
     mainTerminal.initialize();
     mainTerminal.viewOptions();
