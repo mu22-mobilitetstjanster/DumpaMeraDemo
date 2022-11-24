@@ -1,17 +1,12 @@
 package view;
 
 import factory.VehicleFactory;
-import pojo.HeavyTruck;
-import pojo.LightTruck;
-import pojo.Van;
 import pojo.Vehicle;
-import types.VehicleType;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
-public class MainTerminal extends Terminal implements ChoiceTerminal {
+public class TruckTerminal extends Terminal implements ChoiceTerminal {
 
   private final int VIEW_TRUCKS_INDEX = 0;
   private final int REGISTER_NEW_TRUCK_INDEX = 1;
@@ -39,8 +34,11 @@ public class MainTerminal extends Terminal implements ChoiceTerminal {
     int vehicleType = 0;
     int vehicleWeight = 0;
 
+    while(vehicleType >= vehiclesTypes.size()) {
+      vehicleType = queryIntegerInput("Vehicle type: ", vehiclesTypes);
+    }
 
-    while(response == null) {
+    /*while(response == null) {
       response = queryInput("Vehicle type: ", vehiclesTypes);
 
       if(response.matches("[0-9]")) {
@@ -54,19 +52,14 @@ public class MainTerminal extends Terminal implements ChoiceTerminal {
         response = null;
         System.out.println("Not a digit, try again");
       }
-    }
+    }*/
 
     response = null;
     while(response == null) {
       response = queryInput("Vehicle weight: ");
 
-      if(response.matches("[0-9]")) {
+      if(response.matches("[0-9]+")) {
         vehicleWeight = Integer.parseInt(response);
-
-        if(vehicleWeight >= vehiclesTypes.size()) {
-          response = null;
-          System.out.println("Index was not in the list, try again");
-        }
       } else {
         response = null;
         System.out.println("Not a digit, try again");

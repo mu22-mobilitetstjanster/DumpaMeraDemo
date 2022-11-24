@@ -6,7 +6,6 @@ import factory.BayFactory;
 import pojo.Bay;
 import pojo.Vehicle;
 import types.BayIndex;
-import types.VehicleType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ public class Warehouse {
   private static Warehouse instance;
 
   private final BayService bayService;
-  private final MainTerminal mainTerminal;
+  private final TruckTerminal mainTerminal;
 
   private Warehouse() {
     List<Bay> bays = new ArrayList<>();
@@ -26,7 +25,7 @@ public class Warehouse {
     bays.add(BayFactory.create(BayIndex.BAY_E));
 
     this.bayService = new BayCoordinator(bays);
-    this.mainTerminal = new MainTerminal();
+    this.mainTerminal = new TruckTerminal();
   }
 
   public void initialize() {

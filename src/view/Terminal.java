@@ -1,6 +1,7 @@
 package view;
 
 import pojo.Choice;
+import validation.VehicleValidation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,30 @@ public abstract class Terminal {
     }
   }
 
+  public int queryIntegerInput(String query, List<String> options, VehicleValidation validation) {
+    int response = -1;
+    while(response == -1) {
+      response = queryIntegerInput(query, options);
+      if(!validation.isValid(response)) {
+        System.out.println("Input is invalid, try again");
+        response = -1;
+      }
+    }
+    return response;
+  }
+
+  public int queryIntegerInput(String query, List<String> options) {
+    String response = null;
+    while(response == null) {
+      response = queryInput(query, options);
+
+      if (!response.matches("[0-9]+")) {
+        response = null;
+        System.out.println("Input should be a digit, try again");
+      }
+    }
+    return Integer.parseInt(response);
+  }
 
   public String queryInput(String query, List<String> options) {
     System.out.println(query);
