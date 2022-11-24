@@ -18,9 +18,7 @@ public class Warehouse {
   private final VehicleTerminal mainTerminal;
 
   private Warehouse() {
-    List<Bay> bays = new ArrayList<>();
-
-    this.bayService = new BayCoordinator(bays);
+    this.bayService = new BayCoordinator();
     this.mainTerminal = new VehicleTerminal();
   }
 

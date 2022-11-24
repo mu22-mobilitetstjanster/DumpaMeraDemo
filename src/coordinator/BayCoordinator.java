@@ -3,6 +3,7 @@ package coordinator;
 import pojo.Bay;
 import pojo.Vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,8 +11,8 @@ public class BayCoordinator implements BayService {
 
   private final List<Bay> bays;
 
-  public BayCoordinator(List<Bay> bays) {
-    this.bays = bays;
+  public BayCoordinator() {
+    this.bays = new ArrayList<>();
   }
 
   @Override
