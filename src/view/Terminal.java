@@ -62,9 +62,10 @@ public abstract class Terminal {
     int response = -1;
     while(response == -1) {
       response = queryIntegerInput(query, options);
+
       if(!validation.isValid(response)) {
-        System.out.println("Input is invalid, try again");
         response = -1;
+        System.out.println("Input is invalid, try again");
       }
     }
     return response;
@@ -81,6 +82,10 @@ public abstract class Terminal {
       }
     }
     return Integer.parseInt(response);
+  }
+
+  public int queryIntegerInput(String query) {
+    return queryIntegerInput(query, null);
   }
 
   public String queryInput(String query, List<String> options) {

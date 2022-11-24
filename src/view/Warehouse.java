@@ -14,7 +14,7 @@ public class Warehouse {
   private static Warehouse instance;
 
   private final BayService bayService;
-  private final TruckTerminal mainTerminal;
+  private final VehicleTerminal mainTerminal;
 
   private Warehouse() {
     List<Bay> bays = new ArrayList<>();
@@ -25,7 +25,7 @@ public class Warehouse {
     bays.add(BayFactory.create(BayIndex.BAY_E));
 
     this.bayService = new BayCoordinator(bays);
-    this.mainTerminal = new TruckTerminal();
+    this.mainTerminal = new VehicleTerminal();
   }
 
   public void initialize() {
