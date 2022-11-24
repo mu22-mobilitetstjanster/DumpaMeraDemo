@@ -2,6 +2,7 @@ package view;
 
 import coordinator.BayCoordinator;
 import coordinator.BayService;
+import exception.BayNotExistException;
 import factory.BayFactory;
 import pojo.Bay;
 import pojo.Vehicle;
@@ -18,6 +19,13 @@ public class Warehouse {
 
   private Warehouse() {
     List<Bay> bays = new ArrayList<>();
+
+    this.bayService = new BayCoordinator(bays);
+    this.mainTerminal = new VehicleTerminal();
+  }
+
+  public void initialize() throws BayNotExistException {
+    List<Bay> bays = this.bayService.getAll();
     bays.add(BayFactory.create(BayIndex.BAY_A));
     bays.add(BayFactory.create(BayIndex.BAY_B));
     bays.add(BayFactory.create(BayIndex.BAY_C));
@@ -25,11 +33,6 @@ public class Warehouse {
     bays.add(BayFactory.create(BayIndex.BAY_E));
     bays.add(BayFactory.create("F"));
 
-    this.bayService = new BayCoordinator(bays);
-    this.mainTerminal = new VehicleTerminal();
-  }
-
-  public void initialize() {
     mainTerminal.initialize();
     mainTerminal.viewOptions();
   }

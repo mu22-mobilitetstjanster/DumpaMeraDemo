@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BayFactory {
 
-  public static Bay create(String bayIndex) {
+  public static Bay create(String bayIndex) throws BayNotExistException {
     Bay bay = null;
 
     switch(bayIndex) {
