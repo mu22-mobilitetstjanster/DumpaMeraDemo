@@ -28,17 +28,11 @@ public class VehicleTerminal extends Terminal implements ChoiceTerminal {
       System.out.println("Invalid input");
     }
   }
-
-  private VehicleValidation getTypeValidation(int boundary) {
-    return (input) -> input < boundary;
-  }
-
+  
   private void registerNewTruck() {
     List<String> vehiclesTypes = Arrays.asList("Van", "Light truck", "Heavy truck");
 
-    VehicleValidation typeValidation = this.getTypeValidation(vehiclesTypes.size());
-    
-    int vehicleType = queryIntegerInput("Vehicle type: ", vehiclesTypes, typeValidation);
+    int vehicleType = queryIntegerInput("Vehicle type: ", vehiclesTypes, (input) -> input < vehiclesTypes.size());
     int vehicleWeight = queryIntegerInput("Vehicle weight: ");
 
 
